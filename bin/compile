@@ -15,6 +15,7 @@ if [[ -z "${YARN_TARGET}" ]]; then
     exit 1
 fi
 
+cd $BUILD_DIR
 yarn
 yarn $YARN_TARGET
 
