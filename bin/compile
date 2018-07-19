@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+indent() {
+    sed -u 's/^/      /'
+}
+
+BUILD_DIR=$1
+CACHE_DIR=$2
+ENV_DIR=$3
+
+YARN_TARGET=$(cat ${ENV_DIR}/YARN_TARGET)
+
+if [[ -z "${YARN_TARGET}" ]]; then
+    echo "YARN_TARGET was not set. Aborting" | indent
+    exit 1
+fi
+
+yarn
+yarn $YARN_TARGET
+
+exit $?
